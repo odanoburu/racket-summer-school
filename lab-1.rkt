@@ -50,12 +50,18 @@
 
 ;;;
 ;; exercise 2
-#;(define-rewrite-rule
-    (loop v0 ((v1 e1) ...) e0 ...)
-    
-    
-  )
+(define-rewrite-rule
+  (loop v0 ((v1 e1) ...) e0 ...)
+  (letrec ([v0 (lambda (v1 ...)
+              e0 ...)])
+    (v0 e1 ...)))
 
+(check-equal?
+ (loop fac ([n 10])
+       (if (zero? n)
+           1
+           (* n (fac (sub1 n)))))
+ 3628800)
 ;;;
 ;; exercise 3
 (define-rewrite-rule
@@ -63,6 +69,10 @@
   (if (and bs ...)
       (list bs ...)
       #f))
+
+(check-equal? (all #f 1) #f)
+(check-equal? (all 0 1 2) (list 0 1 2))
+(check-equal? (all 0 1 2 #f) #f)
 
 ;;;
 ;; exercise 4
