@@ -6,6 +6,10 @@
 ;1.1 ;; err
 ;(if 1 2 3) ;; err
 (if #f 2 3)
+(if (if #t #f #t) 1 2)
+(lambda ([x : Int] [y : Int]) x)
+((lambda ([x : Bool]) x) #t)
+((lambda ([x : Int] [y : Int]) x) 1 2)
 +
 (+ 1 2)
 ;(lambda ([x : Int]) x)
