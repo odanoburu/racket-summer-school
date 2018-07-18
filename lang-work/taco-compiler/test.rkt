@@ -1,0 +1,2 @@
+#lang taco-compiler
+a
